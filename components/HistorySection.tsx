@@ -9,14 +9,14 @@ export default function HistorySection() {
     {
       year: '2005',
       title: 'Fundação da BMsoft',
-      description: 'Nascemos em São Paulo com a missão de criar sistemas de faturamento confiáveis em servidores locais. Nosso primeiro software ajudou pequenos lojistas a controlarem estoques com segurança digital.',
+      description: 'Nascemos em Rio do Sul, SC, com a missão de criar sistemas de faturamento confiáveis em servidores locais. Nosso primeiro software ajudou pequenos lojistas a controlarem estoques com segurança digital.',
       icon: Calendar,
       stat: '1º Cliente local'
     },
     {
       year: '2011',
       title: 'A Revolução Fiscal (NFe)',
-      description: 'Com a chegada da Nota Fiscal Eletrônica obrigatória no Brasil, a BMsoft desenvolveu um dos emissores mais rápidos e estáveis do mercado paulista, garantindo conformidade fiscal absoluta.',
+      description: 'Com a chegada da Nota Fiscal Eletrônica obrigatória no Brasil, a BMsoft desenvolveu um dos emissores mais rápidos e estáveis do mercado catarinense, garantindo conformidade fiscal absoluta.',
       icon: Award,
       stat: '1M+ XMLs emitidos'
     },
@@ -52,7 +52,7 @@ export default function HistorySection() {
           <span className="text-xs font-mono tracking-wider text-blue-400 uppercase font-bold">Nossa Trajetória</span>
           <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">Mais de Duas Décadas Desenvolvendo Confiança</h2>
           <p className="text-slate-400 text-sm">
-            Conheça a história da BMsoft: como fomos de um pequeno escritório paulista para um parceiro nacional presente em centenas de empresas.
+            Conheça a história da BMsoft: como fomos de uma pequena software house para um parceiro regional, presente em centenas de empresas.
           </p>
         </div>
 

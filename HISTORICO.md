@@ -2,6 +2,10 @@
 
 Mais recente primeiro. PATCH a cada envio ao GitHub; MAJOR/MINOR só quando pedido.
 
+## 0.1.3 — 2026-10-06
+
+- Nossa História: subtítulo "de uma pequena software house para um parceiro regional"; fundação em Rio do Sul, SC; NF-e com "mercado catarinense".
+
 ## 0.1.2 — 2026-10-06
 
 - Abertura: logo da BMsoft grande acima do texto, alinhado à esquerda, com entrada suave.
