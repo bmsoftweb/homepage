@@ -2,7 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Send, CheckCircle, MessageSquare, Phone, Mail, Building, Shield } from 'lucide-react';
+import { CheckCircle, MessageSquare, Phone, Mail, Building, Shield } from 'lucide-react';
+import { URL_SUPORTE, abrirWidgetSuporte } from '../lib/suporte';
 
 export default function ContactSection() {
   const [name, setName] = useState('');
@@ -31,30 +32,6 @@ export default function ContactSection() {
       .catch(() => {});
   }, []);
 
-  // Mock interactive chat state
-  const [chatMessages, setChatMessages] = useState([
-    { sender: 'bmsoft', text: 'Olá! Sou a Eloisa da BMsoft Sistemas. Seja muito bem-vindo!' },
-    { sender: 'bmsoft', text: 'Deseja ver uma apresentação do sistema ou tirar dúvidas técnicas hoje?' }
-  ]);
-  const [chatInput, setChatInput] = useState('');
-
-  const handleSendMessage = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!chatInput.trim()) return;
-
-    const userMsg = chatInput;
-    setChatMessages(prev => [...prev, { sender: 'user', text: userMsg }]);
-    setChatInput('');
-
-    // Simulated quick response from consultant bot
-    setTimeout(() => {
-      setChatMessages(prev => [
-        ...prev, 
-        { sender: 'bmsoft', text: 'Entendi! Vou transferir sua mensagem diretamente ao nosso especialista do seu segmento. Ele te chamará no WhatsApp em até 5 minutos.' }
-      ]);
-    }, 1200);
-  };
-
   /** Envia o pedido de apresentação para o CRM (vira lead e negócio no funil) */
   const handleSubmitForm = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -76,12 +53,6 @@ export default function ContactSection() {
     }
   };
 
-  const handleStartWhatsAppDirect = () => {
-    const text = `Olá BMsoft! Gostaria de falar com um especialista sobre o sistema ${interest}.`;
-    const encoded = encodeURIComponent(text);
-    window.open(`https://api.whatsapp.com/send?phone=5547991166107&text=${encoded}`, '_blank');
-  };
-
   return (
     <section id="contato" className="bg-slate-950 text-white py-24 px-6 border-t border-slate-900 relative">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(30,58,138,0.1),transparent_40%)]" />
@@ -89,7 +60,7 @@ export default function ContactSection() {
       <div className="max-w-7xl mx-auto space-y-16 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
-          {/* Left info & interactive chat mockup (7 cols) */}
+          {/* Left info & atendimento ao vivo (7 cols) */}
           <div className="lg:col-span-7 space-y-8">
             <div className="space-y-4">
               <span className="inline-flex items-center gap-1.5 bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded-full text-xs font-semibold text-blue-400">Solicitar Atendimento</span>
@@ -141,61 +112,19 @@ export default function ContactSection() {
               </div>
             </div>
 
-            {/* Interactive WhatsApp Mockup */}
-            <div className="max-w-md bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-2xl text-white font-sans hidden sm:block">
-              <div className="bg-slate-950 p-4 border-b border-slate-800 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full bg-blue-600 flex items-center justify-center font-bold text-sm text-white">
-                    EL
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-bold">Eloisa - BMsoft</h4>
-                    <span className="text-[10px] text-green-400 flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                      Online agora
-                    </span>
-                  </div>
-                </div>
-                <button
-                  onClick={handleStartWhatsAppDirect}
-                  className="bg-green-600 hover:bg-green-500 text-white p-1.5 rounded text-xs flex items-center gap-1 transition-all"
-                >
-                  <MessageSquare className="w-3.5 h-3.5" />
-                  Ir para Zap
-                </button>
-              </div>
-
-              <div className="p-4 h-[180px] overflow-y-auto space-y-3 flex flex-col bg-slate-950/40">
-                {chatMessages.map((msg, idx) => (
-                  <div 
-                    key={idx}
-                    className={`max-w-[85%] p-3 rounded-lg text-xs leading-relaxed ${
-                      msg.sender === 'bmsoft' 
-                        ? 'bg-slate-800 text-slate-200 self-start rounded-tl-none' 
-                        : 'bg-blue-600 text-white self-end rounded-tr-none'
-                    }`}
-                  >
-                    {msg.text}
-                  </div>
-                ))}
-              </div>
-
-              <form onSubmit={handleSendMessage} className="p-3 bg-slate-950 border-t border-slate-800 flex gap-2">
-                <input
-                  type="text"
-                  placeholder="Escreva uma mensagem..."
-                  value={chatInput}
-                  onChange={(e) => setChatInput(e.target.value)}
-                  className="flex-1 bg-slate-900 border border-slate-800 text-white text-xs px-3 py-2 rounded focus:border-blue-500 outline-none transition-all"
-                />
-                <button 
-                  type="submit"
-                  className="bg-blue-600 hover:bg-blue-500 text-white p-2 rounded transition-all shrink-0"
-                >
-                  <Send className="w-3.5 h-3.5" />
-                </button>
-              </form>
-            </div>
+            {/* Atendimento ao vivo: abre o chat do widget de suporte do CRM (sem o widget, a página de suporte) */}
+            <a
+              href={URL_SUPORTE}
+              target="_blank"
+              rel="noopener"
+              onClick={(e) => {
+                if (abrirWidgetSuporte()) e.preventDefault();
+              }}
+              className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-lg shadow-green-500/20"
+            >
+              <MessageSquare className="w-4 h-4" />
+              Falar com a equipe agora
+            </a>
           </div>
 
           {/* Right Leads capturing form (5 cols) */}

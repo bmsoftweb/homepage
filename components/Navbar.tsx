@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Menu, X, Sparkles, MessageSquare } from 'lucide-react';
 import logo from '../src/assets/images/bmsoft_logo.png';
 
-const URL_SUPORTE = 'https://crm.bmsoft.com.br/suporte?e=1';
+import { URL_SUPORTE, abrirWidgetSuporte } from '../lib/suporte';
 
 /** WhatsApp da BMsoft, quadrado com a mesma altura do botão Simulador IA */
 function BotaoWhatsApp() {
@@ -46,10 +46,7 @@ export default function Navbar({ onScrollToSimulator, onScrollToContact, activeS
   /** Suporte abre o painel do widget do CRM; sem o widget, segue o link (página de suporte em nova aba) */
   const abrirSuporte = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (e.currentTarget.getAttribute('href') !== URL_SUPORTE) return;
-    const botaoWidget = document.querySelector<HTMLButtonElement>('button[aria-label="Suporte"]');
-    if (!botaoWidget) return;
-    e.preventDefault();
-    botaoWidget.click();
+    if (abrirWidgetSuporte()) e.preventDefault();
   };
 
   return (

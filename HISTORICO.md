@@ -2,6 +2,11 @@
 
 Mais recente primeiro. PATCH a cada envio ao GitHub; MAJOR/MINOR só quando pedido.
 
+## 0.1.6 — 2026-10-06
+
+- Contato: o painel de chat simulado da Eloisa virou um botão "Falar com a equipe agora", que abre o chat do widget de suporte (sem o widget, a página de suporte em nova aba).
+- Suporte do menu e o botão novo usam `lib/suporte.ts`: só abrem o chat se estiver fechado (antes, com o chat aberto, o clique fechava).
+
 ## 0.1.5 — 2026-10-06
 
 - "Agendar Apresentação" envia de verdade: rota `/api/lead` repassa ao CRM Web (crm.bmsoft.com.br, empresa 1), que cria o lead e o negócio no funil. Campo-isca contra robôs; erros internos do CRM viram mensagem genérica.
