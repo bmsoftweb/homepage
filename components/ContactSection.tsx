@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Send, CheckCircle, MessageSquare, Phone, Mail, Building, Shield } from 'lucide-react';
 
@@ -9,11 +9,27 @@ export default function ContactSection() {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [company, setCompany] = useState('');
-  const [interest, setInterest] = useState('BM ERP (Gestão Empresarial)');
+  const [interest, setInterest] = useState('');
   const [message, setMessage] = useState('');
-  
+  // Campo-isca escondido: pessoa não preenche, robô sim (o CRM descarta)
+  const [isca, setIsca] = useState('');
+  // Sistemas de interesse = aplicativos ativos da tabela (mesma lista da seção Aplicativos)
+  const [sistemas, setSistemas] = useState<string[]>([]);
+
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [erroEnvio, setErroEnvio] = useState('');
+
+  useEffect(() => {
+    fetch('/api/aplicativos')
+      .then((r) => (r.ok ? r.json() : []))
+      .then((lista: { name: string; badge: string }[]) => {
+        const nomes = lista.map((a) => (a.badge ? `${a.name} (${a.badge})` : a.name));
+        setSistemas(nomes);
+        setInterest((atual) => atual || nomes[0] || '');
+      })
+      .catch(() => {});
+  }, []);
 
   // Mock interactive chat state
   const [chatMessages, setChatMessages] = useState([
@@ -39,15 +55,25 @@ export default function ContactSection() {
     }, 1200);
   };
 
-  const handleSubmitForm = (e: React.FormEvent) => {
+  /** Envia o pedido de apresentação para o CRM (vira lead e negócio no funil) */
+  const handleSubmitForm = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-
-    // Simulate database write / form submission
-    setTimeout(() => {
-      setLoading(false);
+    setErroEnvio('');
+    try {
+      const r = await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nome: name, empresa: company, email, telefone: phone, interesse: interest, mensagem: message, site: isca }),
+      });
+      const corpo = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(corpo.error || 'Não foi possível enviar agora. Tente de novo em instantes.');
       setSubmitted(true);
-    }, 1500);
+    } catch (err: any) {
+      setErroEnvio(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleStartWhatsAppDirect = () => {
@@ -191,7 +217,7 @@ export default function ContactSection() {
                     Olá {name}, obrigado pelo contato. Nossos analistas de sistema já receberam seus dados operacionais e de interesse na solução <strong>{interest}</strong>.
                   </p>
                   <p className="text-xs text-slate-400">
-                    Nossa equipe te chamará no WhatsApp ({phone}) ou enviará proposta formalizada em seu e-mail ({email}) em menos de 15 minutos!
+                    Um consultor vai te chamar no WhatsApp ({phone}) para combinar a apresentação.
                   </p>
                   <button
                     onClick={() => setSubmitted(false)}
@@ -269,10 +295,10 @@ export default function ContactSection() {
                         onChange={(e) => setInterest(e.target.value)}
                         className="w-full bg-slate-900 border border-slate-800 text-white rounded-lg px-4 py-3 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all"
                       >
-                        <option value="BM ERP (Gestão Empresarial)">BM ERP (Gestão Empresarial)</option>
-                        <option value="BM Força de Vendas (Aplicativo)">BM Força de Vendas (Aplicativo)</option>
-                        <option value="BM PDV (Frente de Caixa)">BM PDV (Frente de Caixa)</option>
-                        <option value="BM Service (Ordens de Serviço)">BM Service (Ordens de Serviço)</option>
+                        {sistemas.length === 0 && <option value="">Carregando sistemas...</option>}
+                        {sistemas.map((s) => (
+                          <option key={s} value={s}>{s}</option>
+                        ))}
                       </select>
                     </div>
 
@@ -286,9 +312,23 @@ export default function ContactSection() {
                       />
                     </div>
 
+                    {/* Isca para robôs: fora da tela e fora do Tab */}
+                    <input
+                      type="text"
+                      name="site"
+                      value={isca}
+                      onChange={(e) => setIsca(e.target.value)}
+                      tabIndex={-1}
+                      autoComplete="off"
+                      aria-hidden="true"
+                      className="absolute -left-[9999px] w-px h-px opacity-0"
+                    />
+
+                    {erroEnvio && <p className="text-xs text-red-400">{erroEnvio}</p>}
+
                     <button
                       type="submit"
-                      disabled={loading}
+                      disabled={loading || !interest}
                       className="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3.5 px-6 rounded-lg flex items-center justify-center gap-2 transition-all shadow-lg shadow-blue-500/25"
                     >
                       {loading ? 'Processando envio...' : 'Solicitar Demonstração Gratuita'}

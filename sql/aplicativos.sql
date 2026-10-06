@@ -10,7 +10,7 @@ CREATE TABLE aplicativos (
   recursos            TEXT         NULL     COMMENT 'Recursos de destaque, um por linha',
   publico_alvo        VARCHAR(255) NULL,
   diferencial         VARCHAR(255) NULL     COMMENT 'Diferencial tecnológico',
-  icone               VARCHAR(30)  NULL     COMMENT 'erp, vendas, pdv, servico, nuvem, relatorio, estoque, logistica, industria, equipe, documento, carrinho',
+  icone               VARCHAR(30)  NULL     COMMENT 'erp, vendas, pdv, servico, nuvem, relatorio, estoque, logistica, industria, equipe, documento, carrinho, impressora, integracao, pesquisa, moveis',
   imagem_url          VARCHAR(255) NULL     COMMENT 'Imagem do quadro da direita; vazio usa a imagem padrão',
   link_saiba_mais     VARCHAR(255) NULL     COMMENT 'Página ou vídeo do produto; vazio esconde o botão',
   ordem               INT          NOT NULL DEFAULT 0,

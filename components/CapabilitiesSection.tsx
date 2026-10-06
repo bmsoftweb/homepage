@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import {
   Building2, Smartphone, Monitor, Wrench, CheckCircle, Cloud, BarChart3, Package, Truck, Factory, Users,
-  FileText, ShoppingCart, ArrowRight, type LucideIcon
+  FileText, ShoppingCart, Printer, Plug, PackageSearch, Armchair, ArrowRight, type LucideIcon
 } from 'lucide-react';
 import { SoftwareApp } from './types';
 
@@ -14,7 +14,7 @@ import appsMockupsImg from '../src/assets/images/apps_mockups_1791295877090.jpg'
 // Valores aceitos no campo "icone" da tabela aplicativos
 const ICONES: Record<string, LucideIcon> = {
   erp: Building2, vendas: Smartphone, pdv: Monitor, servico: Wrench, nuvem: Cloud, relatorio: BarChart3,
-  estoque: Package, logistica: Truck, industria: Factory, equipe: Users, documento: FileText, carrinho: ShoppingCart,
+  estoque: Package, logistica: Truck, industria: Factory, equipe: Users, documento: FileText, carrinho: ShoppingCart, impressora: Printer, integracao: Plug, pesquisa: PackageSearch, moveis: Armchair,
 };
 
 export default function CapabilitiesSection() {

@@ -2,6 +2,13 @@
 
 Mais recente primeiro. PATCH a cada envio ao GitHub; MAJOR/MINOR só quando pedido.
 
+## 0.1.5 — 2026-10-06
+
+- "Agendar Apresentação" envia de verdade: rota `/api/lead` repassa ao CRM Web (crm.bmsoft.com.br, empresa 1), que cria o lead e o negócio no funil. Campo-isca contra robôs; erros internos do CRM viram mensagem genérica.
+- "Sistema de Interesse" lista os aplicativos ativos da tabela `aplicativos`.
+- Ícones novos para os aplicativos: impressora, integracao, pesquisa, moveis.
+- SQL dos registros de PrintControl, BM API, Acerto de Estoque, EstoqueWEB, Carga e Orçamento Fácil em `sql/`.
+
 ## 0.1.4 — 2026-10-06
 
 - Aplicativos vêm do MySQL (banco `homepage`, tabela `aplicativos`): rota `/api/aplicativos` (só ativos, na ordem; cache de 1 min no Vercel). Credenciais em `MYSQL_*` no ambiente. SQL da tabela e dos registros (ERP, Força de Vendas, PDV, Service, BI, CRM, B2B, Produção Lite) em `sql/`.
