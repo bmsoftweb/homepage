@@ -2,6 +2,13 @@
 
 Mais recente primeiro. PATCH a cada envio ao GitHub; MAJOR/MINOR só quando pedido.
 
+## 0.1.2 — 2026-10-06
+
+- Abertura: logo da BMsoft grande acima do texto, alinhado à esquerda, com entrada suave.
+- Header: botão do WhatsApp (47) 99116-6107 depois de "Falar com Consultor" (também no celular, ao lado do Simulador).
+- Botões de WhatsApp do Simulador IA e do Contato agora vão para (47) 99116-6107 (antes um número de exemplo).
+- Removido o ícone "N" de depuração do Next em modo de desenvolvimento.
+
 ## 0.1.1 — 2026-10-06
 
 - Primeiro envio ao GitHub.

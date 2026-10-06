@@ -53,7 +53,7 @@ export default function ContactSection() {
   const handleStartWhatsAppDirect = () => {
     const text = `Olá BMsoft! Gostaria de falar com um especialista sobre o sistema ${interest}.`;
     const encoded = encodeURIComponent(text);
-    window.open(`https://api.whatsapp.com/send?phone=5511999999999&text=${encoded}`, '_blank');
+    window.open(`https://api.whatsapp.com/send?phone=5547991166107&text=${encoded}`, '_blank');
   };
 
   return (

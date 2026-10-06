@@ -8,6 +8,7 @@ import { ArrowRight, Cloud, Cpu, Database, FileText, Folder, Laptop, Server, Shi
 // Import images safely
 // Foto: Pexels (licença livre), https://www.pexels.com/photo/5496464/
 import heroImg from '../src/assets/images/hero_notebook_pexels_5496464.jpg';
+import logo from '../src/assets/images/bmsoft_logo.png';
 
 // Ícones "holográficos" sobre a foto, posições em % do quadro
 const iconesEsquerda = [Laptop, ShieldCheck, Cloud, Database, Server];
@@ -28,7 +29,16 @@ export default function HeroSection({ onScrollToSimulator, onScrollToApps }: Her
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(30,58,138,0.2),transparent_45%)]" />
       <div className="absolute inset-0 bg-[linear-gradient(rgba(15,23,42,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.1)_1px,transparent_1px)] bg-[size:32px_32px]" />
       
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+      <div className="max-w-7xl mx-auto w-full relative z-10">
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="flex justify-start -mt-10 md:-mt-16 mb-14"
+      >
+        <Image src={logo} alt="BMsoft Sistemas" className="h-16 md:h-24 w-auto drop-shadow-[0_0_24px_rgba(56,189,248,0.35)]" priority />
+      </motion.div>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         <div className="lg:col-span-7 space-y-6">
           <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded-full text-xs font-semibold text-blue-400">
             <Cpu className="w-3.5 h-3.5" />
@@ -75,6 +85,7 @@ export default function HeroSection({ onScrollToSimulator, onScrollToApps }: Her
             </div>
           </div>
         </div>
+      </div>
       </div>
     </section>
   );

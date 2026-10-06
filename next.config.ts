@@ -2,6 +2,8 @@ import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  // Sem o ícone "N" de depuração do Next em modo dev
+  devIndicators: false,
   eslint: {
     ignoreDuringBuilds: true,
   },

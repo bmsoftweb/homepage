@@ -83,7 +83,7 @@ export default function AISimulator({ onScrollToContact }: AISimulatorProps) {
     if (!result) return;
     const intro = `Olá BMsoft! Realizei a simulação AI de Sistemas de Gestão no site de vocês para meu negócio (${businessType}). Desejo agendar uma apresentação comercial gratuita com base no plano gerado.`;
     const encodedText = encodeURIComponent(intro);
-    window.open(`https://api.whatsapp.com/send?phone=5511999999999&text=${encodedText}`, '_blank');
+    window.open(`https://api.whatsapp.com/send?phone=5547991166107&text=${encodedText}`, '_blank');
   };
 
   return (
