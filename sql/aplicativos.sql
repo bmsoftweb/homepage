@@ -1,0 +1,51 @@
+-- Aplicativos exibidos na seção "Aplicativos" da homepage (banco homepage).
+-- Rodar manualmente. A tela lê só os ativos, na ordem do campo "ordem".
+
+CREATE TABLE aplicativos (
+  id                  INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  nome                VARCHAR(80)  NOT NULL COMMENT 'Nome do aplicativo (aba e título do card)',
+  titulo_card         VARCHAR(80)  NOT NULL COMMENT 'Subtítulo abaixo do nome, ex.: Gestão Completa',
+  descricao_card      VARCHAR(255) NULL     COMMENT 'Resumo curto (uma ou duas frases)',
+  descricao_detalhada TEXT         NOT NULL COMMENT 'Texto principal do card',
+  recursos            TEXT         NULL     COMMENT 'Recursos de destaque, um por linha',
+  publico_alvo        VARCHAR(255) NULL,
+  diferencial         VARCHAR(255) NULL     COMMENT 'Diferencial tecnológico',
+  icone               VARCHAR(30)  NULL     COMMENT 'erp, vendas, pdv, servico, nuvem, relatorio, estoque, logistica, industria, equipe, documento, carrinho',
+  imagem_url          VARCHAR(255) NULL     COMMENT 'Imagem do quadro da direita; vazio usa a imagem padrão',
+  link_saiba_mais     VARCHAR(255) NULL     COMMENT 'Página ou vídeo do produto; vazio esconde o botão',
+  ordem               INT          NOT NULL DEFAULT 0,
+  ativo               TINYINT(1)   NOT NULL DEFAULT 1,
+  criado_em           DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  atualizado_em       DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO aplicativos (nome, titulo_card, descricao_card, descricao_detalhada, recursos, publico_alvo, diferencial, icone, ordem) VALUES
+('BM ERP', 'Gestão Completa',
+ 'O coração administrativo da sua empresa. Controle finanças, estoque, compras e faturamento em um só lugar.',
+ 'O BM ERP é um sistema integrado desenvolvido para centralizar todas as informações de sua empresa, unindo o faturamento, controle financeiro, compras e logística em um fluxo dinâmico de trabalho que elimina erros manuais e retrabalho.',
+ 'Controle de Contas a Pagar/Receber e Conciliação Bancária\nControle de Estoque Rigoroso com Custo Médio e Inventário\nEmissão ágil de Notas Fiscais Eletrônicas (NF-e, NFS-e, MDF-e)\nGeração Automática de Livros Fiscais e SPED\nRelatórios Gerenciais e Dashboards de Faturamento e Margem',
+ 'Distribuidores, Atacadistas, Indústrias e Prestadores de Serviços',
+ 'Banco de dados centralizado e criptografado com backup em nuvem automática.',
+ 'erp', 1),
+('BM Força de Vendas', 'Vendas Externas',
+ 'Aplicativo móvel para representantes comerciais em campo. Funciona offline com sincronização inteligente.',
+ 'O BM Força de Vendas capacita seus vendedores de rua com um catálogo digital completo no bolso. Faça pedidos de maneira ágil, verifique limites de crédito e consulte estoque em tempo real direto no smartphone ou tablet.',
+ 'Funcionamento 100% offline com sincronização posterior rápida\nCatálogo de Produtos Digital com Fotos em Alta Resolução\nTabelas de Preços Flexíveis e Promoções Segmentadas\nRoteirização Inteligente de Clientes por Geolocalização\nHistórico Completo de Compras e Limite de Crédito dos Clientes',
+ 'Representantes Comerciais e Indústrias com Equipes Externas',
+ 'Sincronização bidirecional ultrarápida consumindo pouquíssima banda móvel.',
+ 'vendas', 2),
+('BM PDV', 'Frente de Caixa',
+ 'Frente de caixa ultra-rápido para varejo. Emissão veloz de NFC-e e CF-e-SAT sem depender de internet constante.',
+ 'O BM PDV foi arquitetado para garantir que o seu checkout não pare nunca. Com robustez operacional inabalável, o sistema realiza vendas de forma veloz e emite todos os documentos fiscais exigidos pelo governo.',
+ 'Vendas rápidas com atalhos de teclado e leitor de código de barras\nEmissão de NFC-e e CF-e-SAT em segundos com contingência física\nIntegração nativa com Balanças, Gavetas de Dinheiro e Impressoras Térmicas\nGestão de Caixa integrada (Abertura, Sangria, Suprimento, Fechamento)\nInterface limpa, fácil e rápida de treinar para novos caixas',
+ 'Supermercados, Lojas de Material e Varejos',
+ 'Arquitetura de contingência local que salva cupons na memória se a internet cair.',
+ 'pdv', 3),
+('BM Service', 'Assistência e OS',
+ 'Controle completo de Ordens de Serviço, contratos e equipes técnicas em campo ou na oficina.',
+ 'O BM Service organiza o caos operacional de prestadores de serviços. Monitore prazos, aloque os melhores técnicos de acordo com as competências, controle peças usadas no conserto e emita orçamentos aprovados de forma automática.',
+ 'Abertura, Triagem e Status Customizáveis de Ordens de Serviço\nControle de Equipamentos por Número de Série ou Placa\nControle de Contratos de Manutenção Mensal Preventiva e Corretiva\nConsumo de Peças de Reposição integrado à Baixa de Estoque ERP\nAlocação de Equipes e Agendamento de Visitas Técnicas',
+ 'Assistências Técnicas, Oficinas, Provedores de TI, Instaladores',
+ 'Integrado ao módulo financeiro do ERP para faturamento imediato da OS.',
+ 'servico', 4);

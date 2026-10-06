@@ -2,6 +2,14 @@
 
 Mais recente primeiro. PATCH a cada envio ao GitHub; MAJOR/MINOR só quando pedido.
 
+## 0.1.4 — 2026-10-06
+
+- Aplicativos vêm do MySQL (banco `homepage`, tabela `aplicativos`): rota `/api/aplicativos` (só ativos, na ordem; cache de 1 min no Vercel). Credenciais em `MYSQL_*` no ambiente. SQL da tabela e dos registros (ERP, Força de Vendas, PDV, Service, BI, CRM, B2B, Produção Lite) em `sql/`.
+- Seção Aplicativos: menu em cards (ícone, nome, título e descrição curta), quebrando em quantas linhas precisar; ícone, imagem e link "Saiba mais" por aplicativo.
+- Header: "Suporte" como botão verde, "Simulador IA" só com borda azul, WhatsApp com fundo cinza escuro.
+- Cursor de mão em todos os botões.
+- Simulador IA: sem "padarias" e título "Próximo Passo Recomendado".
+
 ## 0.1.3 — 2026-10-06
 
 - Nossa História: subtítulo "de uma pequena software house para um parceiro regional"; fundação em Rio do Sul, SC; NF-e com "mercado catarinense".

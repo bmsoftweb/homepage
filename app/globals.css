@@ -5,3 +5,16 @@
   --font-sans: var(--font-jost), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jost), ui-sans-serif, system-ui, sans-serif;
 }
+
+/* Tailwind 4 tira a "mãozinha" dos botões; volta em todos (desabilitado mostra bloqueio) */
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  select,
+  label[for] {
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: not-allowed;
+  }
+}

@@ -9,4 +9,7 @@ export interface SoftwareApp {
   features: string[];
   targetAudience: string;
   techHighlight: string;
+  icon: string;
+  imageUrl: string;
+  moreUrl: string;
 }

@@ -1,86 +1,41 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import { 
-  Building2, Smartphone, Monitor, Wrench, CheckCircle 
+import {
+  Building2, Smartphone, Monitor, Wrench, CheckCircle, Cloud, BarChart3, Package, Truck, Factory, Users,
+  FileText, ShoppingCart, ArrowRight, type LucideIcon
 } from 'lucide-react';
 import { SoftwareApp } from './types';
 
 // Safely import mockups image
 import appsMockupsImg from '../src/assets/images/apps_mockups_1791295877090.jpg';
 
+// Valores aceitos no campo "icone" da tabela aplicativos
+const ICONES: Record<string, LucideIcon> = {
+  erp: Building2, vendas: Smartphone, pdv: Monitor, servico: Wrench, nuvem: Cloud, relatorio: BarChart3,
+  estoque: Package, logistica: Truck, industria: Factory, equipe: Users, documento: FileText, carrinho: ShoppingCart,
+};
+
 export default function CapabilitiesSection() {
-  const [selectedAppId, setSelectedAppId] = useState('bm-erp');
+  const [apps, setApps] = useState<SoftwareApp[] | null>(null);
+  const [erro, setErro] = useState(false);
+  const [selectedAppId, setSelectedAppId] = useState('');
+  const detalheRef = useRef<HTMLDivElement>(null);
 
-  const apps: SoftwareApp[] = [
-    {
-      id: 'bm-erp',
-      name: 'BM ERP',
-      badge: 'Gestão Completa',
-      shortDescription: 'O coração administrativo da sua empresa. Controle finanças, estoque, compras e faturamento em um só lugar.',
-      detailedDescription: 'O BM ERP é um sistema integrado desenvolvido para centralizar todas as informações de sua empresa, unindo o faturamento, controle financeiro, compras e logística em um fluxo dinâmico de trabalho que elimina erros manuais e retrabalho.',
-      features: [
-        'Controle de Contas a Pagar/Receber e Conciliação Bancária',
-        'Controle de Estoque Rigoroso com Custo Médio e Inventário',
-        'Emissão ágil de Notas Fiscais Eletrônicas (NF-e, NFS-e, MDF-e)',
-        'Geração Automática de Livros Fiscais e SPED',
-        'Relatórios Gerenciais e Dashboards de Faturamento e Margem'
-      ],
-      targetAudience: 'Distribuidores, Atacadistas, Indústrias e Prestadores de Serviços',
-      techHighlight: 'Banco de dados centralizado e criptografado com backup em nuvem automática.'
-    },
-    {
-      id: 'bm-vendas',
-      name: 'BM Força de Vendas',
-      badge: 'Vendas Externas',
-      shortDescription: 'Aplicativo móvel para representantes comerciais em campo. Funciona offline com sincronização inteligente.',
-      detailedDescription: 'O BM Força de Vendas capacita seus vendedores de rua com um catálogo digital completo no bolso. Faça pedidos de maneira ágil, verifique limites de crédito e consulte estoque em tempo real direto no smartphone ou tablet.',
-      features: [
-        'Funcionamento 100% offline com sincronização posterior rápida',
-        'Catálogo de Produtos Digital com Fotos em Alta Resolução',
-        'Tabelas de Preços Flexíveis e Promoções Segmentadas',
-        'Roteirização Inteligente de Clientes por Geolocalização',
-        'Histórico Completo de Compras e Limite de Crédito dos Clientes'
-      ],
-      targetAudience: 'Representantes Comerciais e Indústrias com Equipes Externas',
-      techHighlight: 'Sincronização bidirecional ultrarápida consumindo pouquíssima banda móvel.'
-    },
-    {
-      id: 'bm-pdv',
-      name: 'BM PDV',
-      badge: 'Frente de Caixa',
-      shortDescription: 'Frente de caixa ultra-rápido para varejo. Emissão veloz de NFC-e e CF-e-SAT sem depender de internet constante.',
-      detailedDescription: 'O BM PDV foi arquitetado para garantir que o seu checkout não pare nunca. Com robustez operacional inabalável, o sistema realiza vendas de forma veloz e emite todos os documentos fiscais exigidos pelo governo.',
-      features: [
-        'Vendas rápidas com atalhos de teclado e leitor de código de barras',
-        'Emissão de NFC-e e CF-e-SAT em segundos com contingência física',
-        'Integração nativa com Balanças, Gavetas de Dinheiro e Impressoras Térmicas',
-        'Gestão de Caixa integrada (Abertura, Sangria, Suprimento, Fechamento)',
-        'Interface limpa, fácil e rápida de treinar para novos caixas'
-      ],
-      targetAudience: 'Supermercados, Lojas de Material e Varejos',
-      techHighlight: 'Arquitetura de contingência local que salva cupons na memória se a internet cair.'
-    },
-    {
-      id: 'bm-service',
-      name: 'BM Service',
-      badge: 'Assistência e OS',
-      shortDescription: 'Controle completo de Ordens de Serviço, contratos e equipes técnicas em campo ou na oficina.',
-      detailedDescription: 'O BM Service organiza o caos operacional de prestadores de serviços. Monitore prazos, aloque os melhores técnicos de acordo com as competências, controle peças usadas no conserto e emita orçamentos aprovados de forma automática.',
-      features: [
-        'Abertura, Triagem e Status Customizáveis de Ordens de Serviço',
-        'Controle de Equipamentos por Número de Série ou Placa',
-        'Controle de Contratos de Manutenção Mensal Preventiva e Corretiva',
-        'Consumo de Peças de Reposição integrado à Baixa de Estoque ERP',
-        'Alocação de Equipes e Agendamento de Visitas Técnicas'
-      ],
-      targetAudience: 'Assistências Técnicas, Oficinas, Provedores de TI, Instaladores',
-      techHighlight: 'Integrado ao módulo financeiro do ERP para faturamento imediato da OS.'
-    }
-  ];
+  // Aplicativos vêm do banco (tabela homepage.aplicativos)
+  useEffect(() => {
+    fetch('/api/aplicativos')
+      .then((r) => (r.ok ? r.json() : Promise.reject()))
+      .then((lista: SoftwareApp[]) => {
+        setApps(lista);
+        if (lista.length) setSelectedAppId(lista[0].id);
+      })
+      .catch(() => setErro(true));
+  }, []);
 
-  const currentApp = apps.find(a => a.id === selectedAppId) || apps[0];
+  const currentApp = apps?.find(a => a.id === selectedAppId) || apps?.[0];
+  const Icone = ICONES[currentApp?.icon || ''] || Building2;
 
   return (
     <section id="aplicativos" className="bg-slate-900 text-white py-24 px-6 relative border-t border-slate-800">
@@ -97,25 +52,51 @@ export default function CapabilitiesSection() {
           </p>
         </div>
 
-        {/* Symmetrical interactive switcher tabs - NO PILLS, strictly segmented text buttons */}
-        <div className="flex items-center gap-1 p-1 bg-slate-950/60 rounded-xl border border-slate-800/80 max-w-3xl">
-          {apps.map((app) => (
-            <button
-              key={app.id}
-              onClick={() => setSelectedAppId(app.id)}
-              className={`flex-1 text-center py-3.5 px-4 text-xs font-semibold rounded-lg transition-all ${
-                selectedAppId === app.id
-                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20'
-                  : 'text-slate-400 hover:text-white'
-              }`}
-            >
-              {app.name}
-            </button>
-          ))}
+        {!currentApp ? (
+          <p className="text-sm text-slate-500">
+            {erro ? 'Não foi possível carregar os aplicativos agora.' : apps ? 'Nenhum aplicativo cadastrado.' : 'Carregando aplicativos...'}
+          </p>
+        ) : (
+        <>
+        {/* Um card por aplicativo; a grade quebra em quantas linhas precisar */}
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-4">
+          {apps!.map((app) => {
+            const IconeCard = ICONES[app.icon] || Building2;
+            const ativo = selectedAppId === app.id;
+            return (
+              <button
+                key={app.id}
+                onClick={() => {
+                  setSelectedAppId(app.id);
+                  // No celular o detalhe fica abaixo da grade: leva até ele
+                  detalheRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }}
+                aria-pressed={ativo}
+                className={`text-left p-5 rounded-xl border transition-all flex flex-col gap-3 ${
+                  ativo
+                    ? 'bg-blue-600/10 border-blue-500 shadow-lg shadow-blue-500/10'
+                    : 'bg-slate-950/50 border-slate-800/80 hover:border-slate-600 hover:bg-slate-950/80'
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  <div className={`p-2 rounded-lg border ${ativo ? 'bg-blue-600 text-white border-blue-500' : 'bg-blue-600/10 text-blue-400 border-blue-500/10'}`}>
+                    <IconeCard className="w-5 h-5" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="font-bold text-white text-sm truncate">{app.name}</p>
+                    <p className="text-[11px] text-blue-400/80 truncate">{app.badge}</p>
+                  </div>
+                </div>
+                {app.shortDescription && (
+                  <p className="text-xs text-slate-400 leading-relaxed line-clamp-3">{app.shortDescription}</p>
+                )}
+              </button>
+            );
+          })}
         </div>
 
         {/* App Detail Bento-inspired Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        <div ref={detalheRef} className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch scroll-mt-24">
           {/* Left large detail column (7 cols) */}
           <div className="lg:col-span-7 bg-slate-950/50 rounded-2xl border border-slate-800/80 p-8 flex flex-col justify-between relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full filter blur-3xl" />
@@ -123,10 +104,7 @@ export default function CapabilitiesSection() {
             <div className="space-y-6 relative z-10">
               <div className="flex items-center gap-3">
                 <div className="p-2.5 bg-blue-600/10 rounded-lg text-blue-400 border border-blue-500/10">
-                  {selectedAppId === 'bm-erp' && <Building2 className="w-6 h-6" />}
-                  {selectedAppId === 'bm-vendas' && <Smartphone className="w-6 h-6" />}
-                  {selectedAppId === 'bm-pdv' && <Monitor className="w-6 h-6" />}
-                  {selectedAppId === 'bm-service' && <Wrench className="w-6 h-6" />}
+                  <Icone className="w-6 h-6" />
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-white">{currentApp.name}</h3>
@@ -138,6 +116,7 @@ export default function CapabilitiesSection() {
                 {currentApp.detailedDescription}
               </p>
 
+              {currentApp.features.length > 0 && (
               <div className="space-y-3.5 pt-2">
                 <h4 className="text-xs font-mono uppercase tracking-widest text-slate-500">Recursos de Destaque</h4>
                 <ul className="space-y-2.5">
@@ -149,6 +128,19 @@ export default function CapabilitiesSection() {
                   ))}
                 </ul>
               </div>
+              )}
+
+              {currentApp.moreUrl && (
+                <a
+                  href={currentApp.moreUrl}
+                  target="_blank"
+                  rel="noopener"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-blue-400 hover:text-blue-300 transition-colors"
+                >
+                  Saiba mais sobre o {currentApp.name}
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+              )}
             </div>
 
             <div className="pt-8 mt-8 border-t border-slate-900 grid grid-cols-1 sm:grid-cols-2 gap-6 relative z-10">
@@ -175,17 +167,29 @@ export default function CapabilitiesSection() {
 
             {/* Styled Mockup Container with fallback */}
             <div className="aspect-[4/3] relative rounded-lg border border-slate-800 bg-slate-950 overflow-hidden shadow-2xl mt-6">
-              <Image
-                src={appsMockupsImg}
-                alt="Demonstração Aplicativos BMsoft"
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"
-                referrerPolicy="no-referrer"
-              />
+              {currentApp.imageUrl ? (
+                // Imagem do cadastro pode vir de qualquer endereço: <img> comum, sem a otimização do next/image
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={currentApp.imageUrl}
+                  alt={`Tela do ${currentApp.name}`}
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"
+                />
+              ) : (
+                <Image
+                  src={appsMockupsImg}
+                  alt="Demonstração Aplicativos BMsoft"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"
+                  referrerPolicy="no-referrer"
+                />
+              )}
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-50" />
             </div>
           </div>
         </div>
+        </>
+        )}
       </div>
     </section>
   );
