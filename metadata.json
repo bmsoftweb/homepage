@@ -1,0 +1,6 @@
+{
+  "name": "BMsoft Sistemas",
+  "description": "Líder em sistemas de gestão empresarial, ERP, PDV e força de vendas. Modernize sua empresa com as soluções inteligentes da BMsoft.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

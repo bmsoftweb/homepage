@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+/* Site todo em Jost, inclusive onde o código usa font-sans/font-mono */
+@theme inline {
+  --font-sans: var(--font-jost), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jost), ui-sans-serif, system-ui, sans-serif;
+}
