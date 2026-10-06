@@ -2,6 +2,10 @@
 
 Mais recente primeiro. PATCH a cada envio ao GitHub; MAJOR/MINOR só quando pedido.
 
+## 0.1.7 — 2026-10-06
+
+- Links do menu (Início, Aplicativos...): a seção para logo abaixo do menu fixo, sem ficar escondida atrás dele (antes, "Início" cortava o logo grande).
+
 ## 0.1.6 — 2026-10-06
 
 - Contato: o painel de chat simulado da Eloisa virou um botão "Falar com a equipe agora", que abre o chat do widget de suporte (sem o widget, a página de suporte em nova aba).

@@ -6,6 +6,11 @@
   --font-mono: var(--font-jost), ui-sans-serif, system-ui, sans-serif;
 }
 
+/* Links do menu (#inicio, #contato...): a seção para logo abaixo do menu fixo (h-16), sem ficar escondida atrás dele */
+html {
+  scroll-padding-top: 4rem;
+}
+
 /* Tailwind 4 tira a "mãozinha" dos botões; volta em todos (desabilitado mostra bloqueio) */
 @layer base {
   button:not(:disabled),
