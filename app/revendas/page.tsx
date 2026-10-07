@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, ArrowUpRight, Bug, MessagesSquare, MonitorSmartphone } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, Bug, LifeBuoy, MessagesSquare, MonitorSmartphone } from 'lucide-react';
 import logo from '../../src/assets/images/bmsoft_logo.png';
 // Foto: Pexels (licença livre), https://www.pexels.com/photo/5496464/ (a mesma da página inicial)
 import heroImg from '../../src/assets/images/hero_notebook_pexels_5496464.jpg';
@@ -15,6 +15,7 @@ const LINKS = [
   { titulo: 'Interativo', href: 'http://bmsoft.ddns.net:7579/', icone: MonitorSmartphone },
   { titulo: 'Mantis', href: 'http://bmsoft.ddns.net:8088/mantis/login_page.php', icone: Bug },
   { titulo: 'Fórum', href: 'http://bmsoft.ddns.net:8088/forum/', icone: MessagesSquare },
+  { titulo: 'Suporte', href: 'https://suporte.bmsoft.com.br', icone: LifeBuoy },
 ];
 
 export default function Revendas() {
@@ -46,7 +47,7 @@ export default function Revendas() {
         <h1 className="text-3xl sm:text-4xl font-bold">Área das Revendas</h1>
         <p className="text-slate-400 mt-2">Acesso rápido às ferramentas das revendas BMsoft.</p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
           {LINKS.map(({ titulo, href, icone: Icone }) => (
             <a
               key={href}

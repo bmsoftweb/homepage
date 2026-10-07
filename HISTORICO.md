@@ -2,6 +2,10 @@
 
 Mais recente primeiro. PATCH a cada envio ao GitHub; MAJOR/MINOR só quando pedido.
 
+## 0.1.9 — 2026-10-06
+
+- Área das Revendas: card "Suporte" (suporte.bmsoft.com.br, nova aba); os cards ficam em 4 colunas no computador e 2 em telas médias.
+
 ## 0.1.8 — 2026-10-06
 
 - Página Área das Revendas (`/revendas`): atalhos para Interativo, Mantis e Fórum (abrem em nova aba), com o fundo da página inicial. Link "Área das Revendas" no menu, antes de "Falar com Consultor" (e no menu do celular).
