@@ -2,6 +2,11 @@
 
 Mais recente primeiro. PATCH a cada envio ao GitHub; MAJOR/MINOR só quando pedido.
 
+## 0.1.8 — 2026-10-06
+
+- Página Área das Revendas (`/revendas`): atalhos para Interativo, Mantis e Fórum (abrem em nova aba), com o fundo da página inicial. Link "Área das Revendas" no menu, antes de "Falar com Consultor" (e no menu do celular).
+- Menu: saiu o botão "Simulador IA" (o "Simulador IA de Sistemas" do início continua).
+
 ## 0.1.7 — 2026-10-06
 
 - Links do menu (Início, Aplicativos...): a seção para logo abaixo do menu fixo, sem ficar escondida atrás dele (antes, "Início" cortava o logo grande).

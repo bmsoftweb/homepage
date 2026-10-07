@@ -2,12 +2,13 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Menu, X, Sparkles, MessageSquare } from 'lucide-react';
+import Link from 'next/link';
+import { Menu, X, MessageSquare } from 'lucide-react';
 import logo from '../src/assets/images/bmsoft_logo.png';
 
 import { URL_SUPORTE, abrirWidgetSuporte } from '../lib/suporte';
 
-/** WhatsApp da BMsoft, quadrado com a mesma altura do botão Simulador IA */
+/** WhatsApp da BMsoft, quadrado de 32px (altura dos botões do menu) */
 function BotaoWhatsApp() {
   return (
     <a
@@ -26,12 +27,11 @@ function BotaoWhatsApp() {
 }
 
 interface NavbarProps {
-  onScrollToSimulator: () => void;
   onScrollToContact: () => void;
   activeSection: string;
 }
 
-export default function Navbar({ onScrollToSimulator, onScrollToContact, activeSection }: NavbarProps) {
+export default function Navbar({ onScrollToContact, activeSection }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
@@ -84,13 +84,9 @@ export default function Navbar({ onScrollToSimulator, onScrollToContact, activeS
 
         {/* Zone 3: 1-2 primary actions */}
         <div className="hidden md:flex items-center gap-3">
-          <button
-            onClick={onScrollToSimulator}
-            className="border border-blue-500 hover:bg-blue-500/10 text-blue-400 hover:text-blue-300 px-4 py-[7px] text-xs font-semibold rounded-lg flex items-center gap-1.5 transition-all whitespace-nowrap shrink-0"
-          >
-            <Sparkles className="w-3.5 h-3.5" />
-            Simulador IA
-          </button>
+          <Link href="/revendas" className="text-xs font-medium text-slate-400 hover:text-white hidden lg:block whitespace-nowrap transition-colors">
+            Área das Revendas
+          </Link>
           <button
             onClick={onScrollToContact}
             className="text-xs font-medium text-slate-400 hover:text-white hidden xl:block transition-colors"
@@ -102,13 +98,6 @@ export default function Navbar({ onScrollToSimulator, onScrollToContact, activeS
 
         {/* Mobile menu toggle */}
         <div className="md:hidden flex items-center gap-2">
-          <button
-            onClick={onScrollToSimulator}
-            className="border border-blue-500 text-blue-400 p-[7px] rounded-lg"
-            title="Simulador IA"
-          >
-            <Sparkles className="w-4 h-4" />
-          </button>
           <BotaoWhatsApp />
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -143,17 +132,10 @@ export default function Navbar({ onScrollToSimulator, onScrollToContact, activeS
                 {link.label}
               </a>
             ))}
+            <Link href="/revendas" className="text-lg py-2 border-b border-slate-800 hover:text-blue-400 transition-colors">
+              Área das Revendas
+            </Link>
             <div className="flex flex-col gap-3 mt-4">
-              <button
-                onClick={() => {
-                  setIsOpen(false);
-                  onScrollToSimulator();
-                }}
-                className="w-full bg-blue-600 text-white py-3 rounded-lg text-sm font-semibold flex items-center justify-center gap-2"
-              >
-                <Sparkles className="w-4 h-4" />
-                Simular com IA
-              </button>
               <button
                 onClick={() => {
                   setIsOpen(false);

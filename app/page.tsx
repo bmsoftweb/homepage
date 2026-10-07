@@ -47,7 +47,6 @@ export default function Home() {
     <div className="relative min-h-screen bg-slate-950 text-white selection:bg-blue-600/30 selection:text-blue-200">
       {/* Navbar with layout-specific styling */}
       <Navbar
-        onScrollToSimulator={() => scrollToSection('simulador')}
         onScrollToContact={() => scrollToSection('contato')}
         activeSection={activeSection}
       />
