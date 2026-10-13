@@ -9,7 +9,7 @@ import { ESPECIAIS } from '../../lib/especiais';
 
 export const metadata: Metadata = {
   title: 'Aplicativos Especiais | BMsoft Sistemas',
-  description: 'MeuConsultorioWeb, OdontoSys e PrintControl: sistemas da BMsoft para clínicas médicas, clínicas odontológicas e locação de impressoras.',
+  description: 'MeuConsultorioWeb, OdontoSys, PrintControl e Orçamento Fácil: sistemas da BMsoft para clínicas médicas, clínicas odontológicas, locação de impressoras e marcenarias.',
 };
 
 /** Página dos aplicativos especiais (seção "Aplicativos Especiais" da página inicial) */
@@ -44,7 +44,7 @@ export default function Especiais() {
           <span className="text-xs tracking-wider text-blue-400 uppercase font-bold">Aplicativos Especiais</span>
           <h1 className="text-3xl sm:text-4xl font-bold mt-3">Sistemas feitos para segmentos específicos</h1>
           <p className="text-slate-400 mt-3 max-w-2xl leading-relaxed">
-            Soluções completas da BMsoft para clínicas médicas, clínicas odontológicas e empresas de locação de impressoras.
+            Soluções completas da BMsoft para clínicas médicas, clínicas odontológicas, empresas de locação de impressoras e marcenarias de móveis planejados.
           </p>
           {/* Atalhos para cada aplicativo da página */}
           <nav className="flex flex-wrap gap-2 mt-8">

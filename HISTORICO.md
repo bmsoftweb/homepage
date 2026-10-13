@@ -2,6 +2,10 @@
 
 Mais recente primeiro. PATCH a cada envio ao GitHub; MAJOR/MINOR só quando pedido.
 
+## 0.1.11 — 2026-10-13
+
+- Aplicativos Especiais: entrou o Orçamento Fácil (marcenarias e móveis planejados). Cards em 4 colunas no computador e 2 em telas médias; textos da página citam as marcenarias.
+
 ## 0.1.10 — 2026-10-13
 
 - Seção "Aplicativos Especiais" na página inicial (depois de Aplicativos): cards de MeuConsultorioWeb, OdontoSys e PrintControl, levando à página nova `/especiais`.
