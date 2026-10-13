@@ -2,6 +2,12 @@
 
 Mais recente primeiro. PATCH a cada envio ao GitHub; MAJOR/MINOR só quando pedido.
 
+## 0.1.10 — 2026-10-13
+
+- Seção "Aplicativos Especiais" na página inicial (depois de Aplicativos): cards de MeuConsultorioWeb, OdontoSys e PrintControl, levando à página nova `/especiais`.
+- Página `/especiais`, no padrão da Área das Revendas: atalhos, descrição, recursos de destaque e público de cada aplicativo, e botão para agendar apresentação. Conteúdo em `lib/especiais.ts`.
+- MeuConsultorioWeb com a playlist do YouTube na página (campo `playlist`, para os outros receberem os seus vídeos).
+
 ## 0.1.9 — 2026-10-06
 
 - Área das Revendas: card "Suporte" (suporte.bmsoft.com.br, nova aba); os cards ficam em 4 colunas no computador e 2 em telas médias.

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import HeroSection from '../components/HeroSection';
 import CapabilitiesSection from '../components/CapabilitiesSection';
+import EspeciaisSection from '../components/EspeciaisSection';
 import HistorySection from '../components/HistorySection';
 import AISimulator from '../components/AISimulator';
 import TestimonialsSection from '../components/TestimonialsSection';
@@ -58,6 +59,8 @@ export default function Home() {
       />
 
       <CapabilitiesSection />
+
+      <EspeciaisSection />
 
       <HistorySection />
 
