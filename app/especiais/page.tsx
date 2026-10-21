@@ -9,7 +9,7 @@ import { ESPECIAIS } from '../../lib/especiais';
 
 export const metadata: Metadata = {
   title: 'Aplicativos Especiais | BMsoft Sistemas',
-  description: 'MeuConsultorioWeb, OdontoSys, PrintControl e Orçamento Fácil: sistemas da BMsoft para clínicas médicas, clínicas odontológicas, locação de impressoras e marcenarias.',
+  description: 'MeuConsultorioWeb, BM-Odonto, BM-Locaprint e BM-Movelplan: sistemas da BMsoft para clínicas médicas, clínicas odontológicas, locação de impressoras e marcenarias.',
 };
 
 /** Página dos aplicativos especiais (seção "Aplicativos Especiais" da página inicial) */

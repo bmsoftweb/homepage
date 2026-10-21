@@ -2,6 +2,10 @@
 
 Mais recente primeiro. PATCH a cada envio ao GitHub; MAJOR/MINOR só quando pedido.
 
+## 0.1.12 — 2026-10-20
+
+- Aplicativos Especiais com os nomes novos: OdontoSys → BM-Odonto, PrintControl → BM-Locaprint, Orçamento Fácil → BM-Movelplan (cards da página inicial, página `/especiais` e descrição para o Google). As âncoras da página continuam as mesmas.
+
 ## 0.1.11 — 2026-10-13
 
 - Aplicativos Especiais: entrou o Orçamento Fácil (marcenarias e móveis planejados). Cards em 4 colunas no computador e 2 em telas médias; textos da página citam as marcenarias.

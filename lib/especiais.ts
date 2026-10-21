@@ -39,11 +39,11 @@ export const ESPECIAIS: AppEspecial[] = [
   },
   {
     slug: 'odontosys',
-    nome: 'OdontoSys',
+    nome: 'BM-Odonto',
     segmento: 'Clínicas Odontológicas',
     resumo: 'Gestão da clínica odontológica: agenda por dentista, odontograma 3D, planos de tratamento, financeiro e estoque.',
     descricao:
-      'O OdontoSys reúne tudo o que a clínica odontológica usa no dia a dia. A agenda separa os dentistas por cor e remarca arrastando a consulta, o atendimento registra anamnese, procedimentos, radiografias e evolução, e o odontograma 3D mostra a condição de cada face do dente. Os planos de tratamento saem impressos com o logo da clínica, e o financeiro acompanha o que cada paciente deve.',
+      'O BM-Odonto reúne tudo o que a clínica odontológica usa no dia a dia. A agenda separa os dentistas por cor e remarca arrastando a consulta, o atendimento registra anamnese, procedimentos, radiografias e evolução, e o odontograma 3D mostra a condição de cada face do dente. Os planos de tratamento saem impressos com o logo da clínica, e o financeiro acompanha o que cada paciente deve.',
     recursos: [
       'Agenda por dentista com visão de semana, mês ou lista, bloqueios de horário e remarcação arrastando',
       'Atendimento com anamnese, procedimentos, fotos, radiografias e evolução clínica impressa',
@@ -59,11 +59,11 @@ export const ESPECIAIS: AppEspecial[] = [
   },
   {
     slug: 'printcontrol',
-    nome: 'PrintControl',
+    nome: 'BM-Locaprint',
     segmento: 'Locação de Impressoras',
     resumo: 'Contratos de locação com franquia, leitura automática de contadores pela rede, faturamento e boletos.',
     descricao:
-      'O PrintControl organiza o dia a dia de quem aluga impressoras e copiadoras. Os contratos definem franquia e valor do excedente, os contadores das máquinas são lidos automaticamente pela rede e o faturamento sai com nota de débito e boleto. A equipe técnica acompanha as ordens de serviço, e os clientes enviam leituras, pedem suprimentos e abrem chamados pela Área do Cliente.',
+      'O BM-Locaprint organiza o dia a dia de quem aluga impressoras e copiadoras. Os contratos definem franquia e valor do excedente, os contadores das máquinas são lidos automaticamente pela rede e o faturamento sai com nota de débito e boleto. A equipe técnica acompanha as ordens de serviço, e os clientes enviam leituras, pedem suprimentos e abrem chamados pela Área do Cliente.',
     recursos: [
       'Contratos de locação com franquia de páginas e cobrança de excedente',
       'Leitura automática dos contadores das impressoras pela rede (SNMP), preto e colorido',
@@ -78,11 +78,11 @@ export const ESPECIAIS: AppEspecial[] = [
   },
   {
     slug: 'orcamentofacil',
-    nome: 'Orçamento Fácil',
+    nome: 'BM-Movelplan',
     segmento: 'Marcenarias e Móveis Planejados',
     resumo: 'Orçamento de móveis planejados direto do projeto do SketchUp: peças, chapas, ferragens, plano de corte e preço final.',
     descricao:
-      'O Orçamento Fácil lê o projeto do arquiteto exportado do SketchUp e transforma o desenho em orçamento. As peças são reconhecidas e classificadas com apoio de um visualizador 3D, e o sistema calcula chapas, fitas, ferragens, insumos e serviços, monta o plano de corte otimizado e chega ao preço com markup, descontos, condição de pagamento e RT do arquiteto. O orçamento sai em PDF para o cliente e com a lista de corte para a produção.',
+      'O BM-Movelplan lê o projeto do arquiteto exportado do SketchUp e transforma o desenho em orçamento. As peças são reconhecidas e classificadas com apoio de um visualizador 3D, e o sistema calcula chapas, fitas, ferragens, insumos e serviços, monta o plano de corte otimizado e chega ao preço com markup, descontos, condição de pagamento e RT do arquiteto. O orçamento sai em PDF para o cliente e com a lista de corte para a produção.',
     recursos: [
       'Importação do projeto do SketchUp (arquivo .dae) com visualizador 3D',
       'Classificação das peças com regras que o sistema aprende e reaproveita',
