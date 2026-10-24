@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, ArrowUpRight, CheckCircle } from 'lucide-react';
+import { ArrowLeft, ArrowUp, ArrowUpRight, CheckCircle } from 'lucide-react';
 import logo from '../../src/assets/images/bmsoft_logo.png';
 // Foto: Pexels (licença livre), https://www.pexels.com/photo/5496464/ (a mesma da página inicial)
 import heroImg from '../../src/assets/images/hero_notebook_pexels_5496464.jpg';
@@ -9,7 +9,7 @@ import { ESPECIAIS } from '../../lib/especiais';
 
 export const metadata: Metadata = {
   title: 'Aplicativos Especiais | BMsoft Sistemas',
-  description: 'MeuConsultorioWeb, BM-Odonto, BM-Locaprint e BM-Movelplan: sistemas da BMsoft para clínicas médicas, clínicas odontológicas, locação de impressoras e marcenarias.',
+  description: 'MeuConsultorioWeb, BM-Odonto, BM-Locaprint, BM-Movelplan e BM-Otica: sistemas da BMsoft para clínicas médicas, clínicas odontológicas, locação de impressoras, marcenarias e óticas.',
 };
 
 /** Página dos aplicativos especiais (seção "Aplicativos Especiais" da página inicial) */
@@ -40,11 +40,11 @@ export default function Especiais() {
       </header>
 
       <main className="relative z-10 max-w-5xl mx-auto px-6 py-16 space-y-16">
-        <div>
+        <div id="topo" className="scroll-mt-24">
           <span className="text-xs tracking-wider text-blue-400 uppercase font-bold">Aplicativos Especiais</span>
           <h1 className="text-3xl sm:text-4xl font-bold mt-3">Sistemas feitos para segmentos específicos</h1>
           <p className="text-slate-400 mt-3 max-w-2xl leading-relaxed">
-            Soluções completas da BMsoft para clínicas médicas, clínicas odontológicas, empresas de locação de impressoras e marcenarias de móveis planejados.
+            Soluções completas da BMsoft para clínicas médicas, clínicas odontológicas, empresas de locação de impressoras, marcenarias de móveis planejados e óticas.
           </p>
           {/* Atalhos para cada aplicativo da página */}
           <nav className="flex flex-wrap gap-2 mt-8">
@@ -116,9 +116,18 @@ export default function Especiais() {
               </ul>
             </div>
 
-            <div className="pt-6 border-t border-slate-800">
-              <p className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Para quem é</p>
-              <p className="text-sm text-slate-300 mt-1">{publico}</p>
+            <div className="pt-6 border-t border-slate-800 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+              <div>
+                <p className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Para quem é</p>
+                <p className="text-sm text-slate-300 mt-1">{publico}</p>
+              </div>
+              <a
+                href="#topo"
+                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-slate-800 text-xs font-semibold text-slate-400 hover:text-white hover:border-blue-500/60 transition-colors shrink-0 self-start sm:self-auto"
+              >
+                <ArrowUp className="w-3.5 h-3.5" />
+                Voltar ao topo
+              </a>
             </div>
           </section>
         ))}

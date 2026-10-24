@@ -1,4 +1,4 @@
-import { Armchair, Printer, Smile, Stethoscope, type LucideIcon } from 'lucide-react';
+import { Armchair, Glasses, Printer, Smile, Stethoscope, type LucideIcon } from 'lucide-react';
 
 /** Aplicativos especiais (para segmentos específicos): seção da página inicial e página /especiais */
 export interface AppEspecial {
@@ -94,5 +94,25 @@ export const ESPECIAIS: AppEspecial[] = [
     ],
     publico: 'Marcenarias e fábricas de móveis planejados que orçam a partir de projetos de arquitetos',
     icone: Armchair,
+  },
+  {
+    slug: 'otica',
+    nome: 'BM-Otica',
+    segmento: 'Óticas',
+    resumo: 'Receitas, ordens de serviço, laboratórios e mensagens pelo WhatsApp para a ótica, integrado ao BMsoft.',
+    descricao:
+      'O BM-Otica organiza o atendimento da ótica da receita à entrega dos óculos. A receita registra os graus de cada olho, a validade e o médico, e vira ordem de serviço com um clique, já com o cliente, a armação e as lentes. A OS acompanha o pedido no laboratório até a entrega, e o sistema avisa o cliente pelo WhatsApp quando os óculos ficam prontos. Integrado ao BMsoft, importa os clientes e gera a venda na entrega.',
+    recursos: [
+      'Receitas com graus de longe e de perto, adição, prisma, DNP, altura e validade',
+      'Ordem de serviço gerada a partir da receita, com armação, lentes, tratamentos e pagamento',
+      'Acompanhamento da OS: aguardando, em produção no laboratório, pronta e entregue',
+      'Mensagens pelo WhatsApp: óculos pronto, lembretes de retirada, aniversário e receita vencendo',
+      'Livro registro de aviamento de receituário óptico',
+      'Cadastro de clientes, médicos, laboratórios e vendedores',
+      'Várias lojas na mesma empresa, com clientes e cadastros compartilhados',
+      'Integração com o BMsoft: importa clientes e gera o pedido quando a OS é entregue',
+    ],
+    publico: 'Óticas e redes de óticas que fazem óculos de grau sob receita',
+    icone: Glasses,
   },
 ];
