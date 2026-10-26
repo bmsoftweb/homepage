@@ -2,6 +2,10 @@
 
 Mais recente primeiro. PATCH a cada envio ao GitHub; MAJOR/MINOR só quando pedido.
 
+## 0.1.14 — 2026-10-26
+
+- Área das Revendas: o card "Suporte" passa a abrir help.bmsoft.com.br (antes suporte.bmsoft.com.br).
+
 ## 0.1.13 — 2026-10-23
 
 - Aplicativos Especiais: entrou o BM-Otica (óticas: receitas, OS, laboratórios, WhatsApp e integração com o BMsoft). Cards em 5 colunas no computador grande, 3 em telas médias e 2 em tablets; textos da página citam as óticas.

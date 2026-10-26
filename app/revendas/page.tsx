@@ -15,7 +15,7 @@ const LINKS = [
   { titulo: 'Interativo', href: 'http://bmsoft.ddns.net:7579/', icone: MonitorSmartphone },
   { titulo: 'Mantis', href: 'http://bmsoft.ddns.net:8088/mantis/login_page.php', icone: Bug },
   { titulo: 'Fórum', href: 'http://bmsoft.ddns.net:8088/forum/', icone: MessagesSquare },
-  { titulo: 'Suporte', href: 'https://suporte.bmsoft.com.br', icone: LifeBuoy },
+  { titulo: 'Suporte', href: 'https://help.bmsoft.com.br', icone: LifeBuoy },
 ];
 
 export default function Revendas() {
