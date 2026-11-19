@@ -7,9 +7,3 @@ INSERT INTO aplicativos (nome, titulo_card, descricao_card, descricao_detalhada,
  'Marcenarias e fábricas de móveis planejados que orçam a partir de projetos de arquitetos',
  'Do desenho ao preço sem medir peça por peça: o projeto do SketchUp vira lista de materiais, plano de corte e orçamento.',
  'moveis', NULL, 15);
-
-
-http://bmsoft.ddns.net:7579/
-http://bmsoft.ddns.net:8088/mantis/login_page.php
-http://bmsoft.ddns.net:8088/forum/
-

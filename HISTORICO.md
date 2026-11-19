@@ -2,6 +2,10 @@
 
 Mais recente primeiro. PATCH a cada envio ao GitHub; MAJOR/MINOR só quando pedido.
 
+## 0.1.16 — 2026-11-19
+
+- sql/aplicativo_orcamentofacil.sql: removidas as URLs coladas por engano no fim do arquivo (o script voltou a rodar).
+
 ## 0.1.15 — 2026-11-19
 
 - Dicas (tooltips) no padrão BMsoft em todo o app: caixa escura com seta no lugar da dica nativa do navegador.
