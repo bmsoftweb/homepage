@@ -2,6 +2,10 @@
 
 Mais recente primeiro. PATCH a cada envio ao GitHub; MAJOR/MINOR só quando pedido.
 
+## 0.1.15 — 2026-11-19
+
+- Dicas (tooltips) no padrão BMsoft em todo o app: caixa escura com seta no lugar da dica nativa do navegador.
+
 ## 0.1.14 — 2026-10-26
 
 - Área das Revendas: o card "Suporte" passa a abrir help.bmsoft.com.br (antes suporte.bmsoft.com.br).

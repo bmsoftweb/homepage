@@ -1,6 +1,7 @@
 import type {Metadata} from 'next';
 import { Jost } from 'next/font/google';
 import Script from 'next/script';
+import { Dica } from '@/components/Dica';
 import './globals.css'; // Global styles
 
 const jost = Jost({
@@ -29,6 +30,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
     <html lang="pt-BR" className={`${jost.variable}`}>
       <body className={`${jost.className} antialiased bg-slate-50 text-slate-900 scroll-smooth`} suppressHydrationWarning>
         {children}
+        <Dica />
         {/* Widget de suporte do CRM Web (botão flutuante no canto inferior direito) */}
         <Script src="https://crm.bmsoft.com.br/widget.js" data-empresa="1" strategy="afterInteractive" />
       </body>
