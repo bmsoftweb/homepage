@@ -1,5 +1,5 @@
 /** Página de suporte do CRM (usada quando o widget não carregou) */
-export const URL_SUPORTE = 'https://crm.bmsoft.com.br/suporte?e=1';
+export const URL_SUPORTE = 'https://sol.bmsoft.com.br/suporte?e=1';
 
 /**
  * Abre o painel do widget de suporte do CRM (widget.js), clicando no botão flutuante dele.

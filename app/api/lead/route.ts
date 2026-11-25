@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 // Lead vai para o CRM Web (empresa 1 = BMsoft, a mesma do widget de suporte). CRM_URL troca o endereço (ex.: teste local)
-const URL_LEADS = `${process.env.CRM_URL || 'https://crm.bmsoft.com.br'}/api/publico/leads/1`;
+const URL_LEADS = `${process.env.CRM_URL || 'https://sol.bmsoft.com.br'}/api/publico/leads/1`;
 
 /** Formulário "Agendar Apresentação": repassa ao CRM, que abre o negócio no funil para o próximo vendedor */
 export async function POST(req: NextRequest) {

@@ -32,7 +32,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
         {children}
         <Dica />
         {/* Widget de suporte do CRM Web (botão flutuante no canto inferior direito) */}
-        <Script src="https://crm.bmsoft.com.br/widget.js" data-empresa="1" strategy="afterInteractive" />
+        <Script src="https://sol.bmsoft.com.br/widget.js" data-empresa="1" strategy="afterInteractive" />
       </body>
     </html>
   );

@@ -2,6 +2,10 @@
 
 Mais recente primeiro. PATCH a cada envio ao GitHub; MAJOR/MINOR só quando pedido.
 
+## 0.1.17 — 2026-11-25
+
+- Suporte e leads no novo endereço do CRM: widget, link de suporte e envio do "Agendar Apresentação" passam de crm.bmsoft.com.br para sol.bmsoft.com.br.
+
 ## 0.1.16 — 2026-11-19
 
 - sql/aplicativo_orcamentofacil.sql: removidas as URLs coladas por engano no fim do arquivo (o script voltou a rodar).
